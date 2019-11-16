@@ -1,0 +1,49 @@
+<body style="background-color:aqua;">
+<center>
+<h1>Butterfly Books</h1>
+
+<p>
+  Who loves books? I do! In this site we will review books and you can like or dislike the books if you have read them.
+
+</center>
+<center>
+<img src="https://previews.123rf.com/images/enika/enika1206/enika120600140/14051913-open-book-with-butterflies-flying-from-it.jpg"/>
+  </center>
+<p>
+  <b> Flunked: Fairy Tale Reform School #1</b> (Jen Calonita)-I love this amazing fractured fairy tale: 5 stars!
+<button onclick="like()">Like</button>
+<button onclick="dislike()">Dislike</button>
+  <h2 id="count">0</h2>
+ <p>
+  <b> Flunked: Fairy Tale Reform School #1</b> (Jen Calonita)-I love this amazing fractured fairy tale
+<button onclick="like()">Like</button>
+<button onclick="dislike()">Dislike</button>
+  <h2 id="count">0</h2>
+  <script>
+    var count=0;
+
+function like() {
+  count +=1;
+updateUI();
+}
+function dislike() {
+  count -=1;
+updateUI();
+}
+function updateUI() {
+ document.getElementById('count').innerHTML=count;
+}
+  </script>
+  <style>
+    img {
+  width: 15%;
+    length: 15%;
+}
+button {
+  background-color:dodgerblue;
+  margin-color:red;
+}
+body {
+  font-family:"Comic Sans MS";
+}
+  </style>
