@@ -1,0 +1,247 @@
+ <title>Magical Art</title>
+	<p align="right"><a href="https://ellabc23.github.io/everything.io/home.html">Go Back </a></p><p> </p>
+  <body background="https://i.dlpng.com/static/png/3954129-white-marble-marble-png-black-and-white-640_640_preview.webp">
+<header>
+  <h1><a href="index.html">Magical Art</a></h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="#"><span>Posts</span></a>
+      </li>
+      <li>
+        <a href="#"><span>Store</span></a>
+      </li>
+      <li>
+        <a href="#"><span>Blog</span></a>
+      </li>
+      <li>
+        <a href="#"><span>About</span></a>
+      </li>
+      <li>
+        <a href="#"><span>Contact</span></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div id="container">
+  <img id="image-to-vote-on" src="images/image_1.jpg">
+
+</div>
+<footer>
+
+</footer>
+		<!-- #container -->
+      <script>
+      var images= [
+  {
+    src:"https://images.fineartamerica.com/images/artworkimages/medium/1/abstract-purple-butterfly-watercolor-olga-shvartsur-transparent.png"
+  },
+  {
+    src:"http://s5.favim.com/orig/69/art-beautiful-bright-colorful-Favim.com-621427.jpg"
+  },  {
+    src:"https://previews.123rf.com/images/golubovy/golubovy1905/golubovy190500370/123340838-abstract-art-texture-background-ocean-storm-effect-beautiful-blue-and-white-acryl-paint-.jpg"
+  },
+   {
+    src:"https://i.pinimg.com/236x/03/0e/c5/030ec59f66f1846294d14bc9f8362361--backgrounds-cute-phone-backgrounds.jpg"
+  },
+     {
+    src:"https://cdn.shopify.com/s/files/1/0237/4325/products/beautifulgarden.JPG?v=1549527211"
+  },
+    {
+    src:"https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/2-sunset-over-ocean-boyan-dimitrov.jpg"
+  }
+]
+
+var index = 0;
+var nextIndex = [1, 2, 3, 4, 5, 0]
+
+setInterval(() => {
+  index = nextIndex[index];
+
+  // index = (index + 1) % images.length
+  
+  // if (index < images.length) {
+  //   index = index + 1
+  // } else {
+  //   index = 0
+  // }
+  
+  // index = index < images.length ? index + 1 : 0;
+
+  var imgEl = document.getElementById('image-to-vote-on');
+  imgEl.src = images[index].src
+  
+}, 1000)
+</script>
+<style>
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.alignright {
+  float: right; 
+  padding: 0 0 10px 10px; /* note the padding around a right floated image */
+}
+
+.alignleft {
+  float: left; 
+  padding: 0 10px 10px 0; /* note the padding around a left floated image */
+}
+
+/******************************************
+/* BASE STYLES                   
+/*******************************************/
+
+body {
+  color: #361fe0;
+  font-family: 'Comic Sans', cursive;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+
+/******************************************
+/* LAYOUT                   
+/*******************************************/
+
+/* Center the container */
+#container {
+  width: 960px;
+  margin: auto;
+}
+
+p {
+  text-align: center;
+}
+
+/******************************************
+/* ADDITIONAL STYLES                   
+/*******************************************/
+
+.btn {
+  background-color: #96faff;
+  padding: 6px 12px;
+  margin: 0 10px 0 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  outline: none;
+  transition: all 200ms ease-in-out;
+}
+
+#image-to-vote-on,
+#buttons-wrapper {
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+  display: block;
+}
+
+#image-to-vote-on {
+  margin-top: 50px;
+}
+
+#buttons-wrapper {
+  margin-top:20px;
+}
+
+#image-to-vote-on + div {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 12px;
+
+}
+
+i {
+  cursor: pointer;
+  color: #cdcdcd;
+  margin-top: 20px;
+  transition: all 250ms ease-in-out;
+}
+
+i:first-of-type {
+  margin-right: 20px;
+}
+
+i:hover {
+  color: #dfa3ff;
+}
+
+h1 {
+  font-family: 'Parkavenue', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 64px;
+  line-height: 1;
+  margin: .5em 0;
+  word-spacing: .2em;
+  text-align: center;
+  
+}
+
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  display: block;
+}
+
+nav ul {
+  text-align: center;
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+}
+
+nav a {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  color: #4500a6;
+  text-decoration: none;
+  padding: 10px 0;
+  font-size: 18px;
+  margin-right: -1px;
+}
+
+nav a:hover {
+  color: #b048e8;
+
+}
+
+nav span {
+  border-right: 1px solid #ddd;
+  padding: 0 24px 0 25px;
+}
+
+nav li:last-of-type span{
+  border-right: none;
+}
+
+p {
+  margin-top: 10px;
+}
+</style>
