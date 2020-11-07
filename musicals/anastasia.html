@@ -1,0 +1,229 @@
+<html>
+<head>
+	<title>Memory</title>
+	<link rel="stylesheet" href="style.css" /> 
+</head>
+<body>
+
+<table>
+	<tr>
+		<td id="c1"></td>
+		<td id="c2"></td>
+		<td id="c3"></td>
+		<td id="c4"></td>
+	</tr>
+	<tr>
+		<td id="c5"></td>
+		<td id="c6"></td>
+		<td id="c7"></td>
+		<td id="c8"></td>
+	</tr>
+	<tr>
+		<td id="c9"></td>
+		<td id="c10"></td>
+		<td id="c11"></td>
+		<td id="c12"></td>
+	</tr>
+</table>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+<script>
+//Define a variable here called "animals" that is equal to an array with 6 different animals repeated once each. You should have a total of 12 animals.
+
+var animals = ["🐉", "🐞", "🦢", "🦄", "🦋", "🦔", "🐉", "🐞", "🦢", "🦄", "🦋", "🦔"]
+
+function shuffleArray(array) {
+	for (var i = array.length - 1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i + 1));
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	
+	//Return the variable "array"
+  return array
+}
+
+//Call the function "shuffleArray" passing in "animals" as the parameter
+shuffleArray(animals)
+
+//Write the beginning of a FOR loop from 1 to 12 inclusive
+for(i=1;i<=12;i++){
+	document
+		.getElementById("c" + i)
+		.innerHTML = "<span class='animal'>" + animals[i - 1] + "</span>";
+}
+
+//Define a variable here called pickedAnimals and set it to a blank array
+var pickedAnimals = []
+
+var spaces = document.getElementsByTagName("td");
+
+//Write the beginning of a FOR loop from 0 to 11 inclusive
+for(i=0; i<=11; i++){
+	spaces[i].addEventListener("click", function() {
+		if (this.classList.contains("success")) {
+			return false;
+		} else {
+			var animalSelected = this.childNodes[0];
+			var idSelected = this.getAttribute("id");
+
+			pickedAnimals.push(
+				{
+					animal: animalSelected.innerHTML,
+					id: idSelected
+				}
+			);
+
+			animalSelected
+				.classList
+				.remove("animal");
+
+			setTimeout(function() {
+				//Call the function "checkWin"
+        checkWin()
+			}, 500);
+		}
+	});
+}
+
+function resetArray() {
+	//Set the variable "pickedAnimals" to a blank array
+  pickedAnimals=[]
+}
+
+function checkWin() {
+	if (pickedAnimals.length === 2) {
+		if (pickedAnimals[0].animal === pickedAnimals[1].animal) {
+			//Write the beginning of a FOR loop from 0 to 1 inclusive
+      for(i=0; i<= 1; i++) {
+				document
+					.getElementById(pickedAnimals[i].id)
+					.classList
+					.add("success");
+			}		
+
+			//Call the function "resetArray" here
+      resetArray()
+		} else {
+			//Write an alert here to indicate to the user that the animals they selected didn't match
+      alert("Sorry! Those animals didn't match!")
+
+			//Write the beginning of a FOR loop from 0 to 1 inclusive
+      for(i=0; i<= 1; i++) {
+				document
+					.getElementById(pickedAnimals[i].id)
+					.childNodes[0]
+					.classList
+					.add("animal");
+			}
+
+			//Call the function "resetArray"
+      resetArray()
+		}
+	}
+}
+</script>
+<style>
+body {
+  background-color:orchid;
+}
+
+table {
+  background-color:#fcccff;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+td {
+	text-align:center;
+	border:#000 1px solid;
+	width:170px;
+	height:170px;
+	font-size:30px;
+	padding:0 20px;
+	transition:all 0.2s ease-in-out;
+	-webkit-transition:all 0.2s ease-in-out;
+	-moz-transition:all 0.2s ease-in-out;
+}
+
+td:hover {
+	cursor:pointer;
+	background-color:#f77dff;
+	transition:all 0.2s ease-in-out;
+	-webkit-transition:all 0.2s ease-in-out;
+	-moz-transition:all 0.2s ease-in-out;
+}
+
+.animal {
+	display:none;
+}
+
+@keyframes happy {
+	0% {
+		transform:none;
+	}
+
+	50% {
+		transform:rotate(20deg);
+	}
+
+	75% {
+		transform:rotate(-20deg) scale(1.2);
+	}
+
+	100% {
+		transform:none;
+	}
+}
+
+@-webkit-keyframes happy {
+	0% {
+		transform:none;
+	}
+
+	50% {
+		transform:rotate(20deg);
+	}
+
+	75% {
+		transform:rotate(-20deg) scale(1.2);
+	}
+
+	100% {
+		transform:none;
+	}
+}
+
+@-moz-keyframes happy {
+	0% {
+		transform:none;
+	}
+
+	50% {
+		transform:rotate(20deg);
+	}
+
+	75% {
+		transform:rotate(-20deg) scale(1.2);
+	}
+
+	100% {
+		transform:none;
+	}
+}
+
+.success {
+	background-color:#03e3fc;
+	animation:happy 0.8s infinite;
+	-webkit-animation:happy 0.8s 1;
+	-moz-animation:happy 0.8s 1;
+}
+
+.success:hover {
+	background-color:#03e3fc !important;
+}
+</style>
