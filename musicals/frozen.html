@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<body background="">
+<!-- 	<body background=""> -->
 		<p align="right"><a href="https://ellabc23.github.io/everything.io/home.html">Go Back  </a></p><p> </p>
 	<title>Frozen: Breakout</title>
 	 <font color="WhiteSmoke">
 		<center><h1> Frozen: Breakout </h1> 
-		 <button onclick="myFunction()"> Press Here!</button>
+<button onclick="myFunction()"> Rules</button>
+<script type="text/javascript">
 
-<script>
 function myFunction() {
     alert("Frozen is such a fun Broadway show with dark twists. Caissie Levy is an amazing Elsa!");
     alert("Help Elsa prove that she isn't just a monster in a cave by helping her break all of the blocks.");
@@ -15,18 +16,56 @@ function myFunction() {
     alert("My favorite songs from Frozen are Let it Go and Monster. That dress transformation was seamless!");
 }
 </script>
-		 </center>
-  <body>
-    <h1 class="Elsa" id="title">FROZEN BREAKOUT!</h1>
-    <input id="nickNameInput" placeholder="Enter your nickname!"></input>
-<button class="someMargin" onclick="startClicked()">START</button>
-    <input id="ballColorInput" placeholder="Enter your ball color!"></input>
-      <canvas id="canvas"></canvas>
-<h2 class="Elsa" id="score">SCORE:0
     
+    <h3>    </h3>
+  
+    <input id="nicknameInput" class="someMargin" type="text" placeholder="Enter your nickname!"></input>
+    <input id="ballColorInput" class="someMargin" type="text" placeholder="Enter your ball color!"></input>
+    <button class="someMargin" onclick="startClicked()">START</button>
+
+
+    
+<h2 id="nicknameoutput" ></h2>
+    <canvas id="canvas"></canvas>
+    <h2 class="Elsa" id="score">SCORE: 0</h2>
     <div id="highScores"></div>
+
+ 
   </body>
 </html>
+
+<style>
+     body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+        background-color: #ccf8ff;
+        font-family: monospace;
+        
+      }
+      canvas {
+        border: 1px solid black;
+        display: block;
+        border-bottom: 1px solid black;
+        
+}
+
+#title{
+  text-align: center;
+  width:100%;
+    height:75px;
+  line-height:75px;
+  font-size: 50px;
+  background-color:#b5d5ff;
+  
+}
+.someMargin {
+  margin-bottom: 30px;
+  
+}
+</style>
 
 <script>
 var CANVAS_SIZE = 300;
@@ -304,37 +343,3 @@ var motion = (function () {
 motion.start();
 
 </script>
-
-<style>
-
-     body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        
-        background-color: #ccf8ff;
-        font-family: monospace;
-        
-      }
-      canvas {
-        border: 1px solid black;
-        display: block;
-        border-bottom: 1px solid black;
-        
-}
-
-#title{
-  text-align: center;
-  width:100%;
-    height:75px;
-  line-height:75px;
-  font-size: 50px;
-  background-color:#b5d5ff;
-  
-}
-.someMargin {
-  margin-bottom: 30px;
-  
-}
-</style>
