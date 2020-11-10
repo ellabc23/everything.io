@@ -75,12 +75,12 @@ var PAUSED = 'Paused';
 var GAME_OVER = 'Game Over!';
 var YOU_WIN = 'You Win!';
 var SCORE = 'Score: ';
-
+	
 var LEFT_ARROW = 37;
 var RIGHT_ARROW = 39;
 var SPACE_BAR = 32;
 var R_KEY = 82;
-
+	
 var score = 0;
 var highScores = [];
 var nickname = 'Player';
@@ -91,10 +91,11 @@ var ctx = canvas.getContext('2d');
 ctx.canvas.width = CANVAS_SIZE;
 ctx.canvas.height = CANVAS_SIZE;
 
-function startClicked(){
-  nickname=document.getElementById('nickNameInput').value;
-   ballColor=document.getElementById('ballColorInput').value;
-  paused=false;
+function startClicked() {
+  nickname = document.getElementById('nicknameInput').value;
+  document.getElementById('nicknameoutput').innerHTML=nickname;
+  ballColor = document.getElementById('ballColorInput').value;
+  paused = false;
 }
 
 function newBall() {
@@ -121,7 +122,7 @@ function newBlocks() {
           [3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5],
           [4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5]];
 }
-
+	
 var blocks = newBlocks();
 
 var paddle = {
@@ -151,7 +152,7 @@ function drawFrame() {
 function bound(coord, lower, upper) {
   return Math.max(lower, Math.min(coord, upper));
 }
-
+	
 function drawBall() { 
   var now = Number(new Date());
   
@@ -159,13 +160,13 @@ function drawBall() {
     ball.time += (now - paused)
     paused = now
   }
-
+	
   var secondsPassed = (now - ball.time) / 1000;
   var dx = secondsPassed * ball.velocity.x;
   var dy = secondsPassed * ball.velocity.y;
   var x = ball.position.x;
   var y = ball.position.y; 
-
+	
   ctx.beginPath();
   ctx.rect(x + dx, y + dy, ball.size, ball.size);
   ctx.fillStyle = ballColor;
@@ -195,7 +196,7 @@ function drawBall() {
     endGame(GAME_OVER);
   }
 }
-
+	
 function drawBlocks() {
   var blocksLeft = 0;
   for (var i = 0; i < blocks.length; i++) {
