@@ -279,10 +279,10 @@ function endGame(message) {
     ball.velocity.y = 0
     ball.velocity.x = 0
     window.title.innerHTML = message;
-
+	  
     highScores += score;
     var el = document.createElement('h2');
-    el.innerHTML = score;
+    el.innerHTML = nickname + ': ' + score;
     document.getElementById('highScores').appendChild(el);
   }
 }
