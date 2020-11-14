@@ -2,16 +2,17 @@
 
 <title>Hamilton: Click Battle!</title>
 <body background="https://storage.needpix.com/rsynced_images/gold-smoke-watercolor-seamless.jpg">
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <link href='./style.css' rel='stylesheet' />
 <script src='./script.js'>
-</script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
- crossorigin="anonymous"></script>
 
-<script defer>
+</script>
+<script>
 	var PLAYER_SCORE = 0;
   var CHALLENGER_SCORE = 0;
   var challenges = {}; // cell:str -> timeoutID:int
+  var CHALLENGE_INTERVAL;
 
   const CELLS = [
     'cell-a1',
@@ -29,13 +30,41 @@
     alert("You are Hamilton in a battle with Burr! Press on the Hamilton logo before Aaron Burr scores a point. Be careful, the logos appear and disappear faster as time goes on!");
   }
 
-  function update_score() {
-    $('span#player_score').html(PLAYER_SCORE)
-    $('span#challenger_score').html(CHALLENGER_SCORE)
+  function start_game() {
+    setTimeout(
+      function () { CHALLENGE_INTERVAL = setInterval(place_challenge, 1000) },
+      1000
+    )
+    $('section#board > button').remove()
+    play_sound('start')
   }
 
-  function finish_challenge(cell /* DOM Element */) {
-    $(cell).html('')
+  function update_score() {
+    document.getElementById('player_score').innerHTML = PLAYER_SCORE
+    document.getElementById('challenger_score').innerHTML = CHALLENGER_SCORE
+  }
+
+  function play_sound(name) {
+    $('#' + name).get(0).play()
+  }
+
+  function player_wins() {
+    PLAYER_SCORE += 1
+    if (PLAYER_SCORE % 10 == 0) {
+      play_sound('levelup')
+
+      var level = PLAYER_SCORE / 10;
+      clearInterval(CHALLENGE_INTERVAL);
+
+      var time_between_placements = 500 / Math.pow(level, 0.2)
+      CHALLENGE_INTERVAL = setInterval(place_challenge, time_between_placements)
+
+      // console.log(1000 / time_between_placements, 'per second')
+    }
+  }
+
+  function finish_challenge(cell) {
+    cell.innerHTML = ''
     clearTimeout(challenges[cell.id])
     delete challenges[cell.id]
     update_score()
@@ -49,11 +78,12 @@
     } 
 
     if (cell.id in challenges) {
-      PLAYER_SCORE += 1
+      player_wins()      
       finish_challenge(cell)
     }
   }
 
+  // challenge user
   function place_challenge() {
     var cell = document.getElementById(
       getRandomElement(
@@ -61,7 +91,7 @@
       )
     )
 
-    if (cell === null) return 'board full';
+    if (cell === null) return;
 
     // set image to challenge    
     cell.innerHTML = '⭐'
@@ -74,8 +104,6 @@
     // start challenge timer using setTimeout
     challenges[cell.id] = setTimeout(challenger_wins, 3000)
   }
-
-  setInterval(place_challenge, 2000)
 
 </script>
 
@@ -97,6 +125,11 @@
   <span id='cell-a2'></span>
   <span id='cell-a3'></span>
   <span id='cell-b1'></span>
+
+	<button onclick="start_game()">
+    START
+  </button>
+
   <span id='cell-b2'></span>
   <span id='cell-b3'></span>
   <span id='cell-c1'></span>
@@ -148,18 +181,7 @@ section#board > span {
   font-size: 300%;
 }
 
-
+section#board > button {
+  font-size: 29px;
+}
 </style>
-
-
-
-
-  
-  
-
-
-
-
-
-
-
