@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!-- <h1>Rock, Paper, Scissors</h1> -->
+    <button onclick='play("rock")'>rock</button>
+    <button onclick='play("paper")'>paper</button>
+    <button onclick='play("scissors")'>scissors</button>
+
+    <h3></h3>
+    
+    <h6></h6>
+
+    <h2></h2> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>  
+
+    <script src="random.js"></script>
+    <script src="script.js"></script>
+  
+  </body>
+</html>
+<script>
+  function getRandomInt(max) {
+  // returns random Int in [0, max)
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function getRandomElement(xs /* Array */) {
+  return xs[getRandomInt(xs.length)];
+}
+
+// $("h1").on("click", function(){
+//   $("h6").text("Hi, jQuery put me here!")
+// })
+
+const rock = 'rock';
+const paper = 'paper';
+const scissors = 'scissors';
+
+const DEFEATS = {
+  rock: scissors,
+  paper: rock,
+  scissors: paper
+}
+
+// Create a variable humanScore. Give it a value of the number 0.
+var humanScore = 0
+// Create a variable computerScore. Give it a value of the number 0.
+var computerScore = 0
+
+var gamesPlayed = 0
+
+// Create a function play. It should accept two parameters: humanPlay and computerPlay
+function play(humanPlay, computerPlay) {
+  if (computerPlay === undefined) {
+    computerPlay = getRandomElement(Object.keys(DEFEATS))
+  }
+
+  // Log "You played {humanPlay}. The bot played {computerPlay}" to the console.
+  // For example: "You played rock. The bot played scissors."
+  console.log(`You played ${humanPlay}. The bot played ${computerPlay}.`)
+  $("h2")
+    .append(`<br>Round ${gamesPlayed + 1}: `)
+    .append("You played <b>" + humanPlay + "</b>")
+    .append(" and the computer played <b>" + computerPlay + "</b>.")
+
+  // If the human play is equal to the computer play
+    // Log "You tied. :|" to the console.
+  if (humanPlay === computerPlay){
+    console.log("You tied. :|")
+  }
+
+  // Else if the humanPlay is 'paper' and the computerPlay is 'rock' OR
+  // humanPlay is 'rock' and the computerPlay is 'scissors' OR
+  // humanPlay is 'scissors' and the computerPlay is 'paper'
+    // Log "You win! :)" to the console
+    // Add one to the humanScore variable (be sure to use += )
+  else if(
+    // humanPlay==='paper' && computerPlay==='rock'
+    // || humanPlay==='rock' && computerPlay==='scissors'
+    // || humanPlay==='scissors' && computerPlay==='paper'
+    DEFEATS[humanPlay] === computerPlay
+  ) {
+    console.log("You win! :)")
+    humanScore +=1
+  }
+  // Otherwise log "You lose! :(" to the console
+    // Add one to the computerScore variable (be sure to use += )
+  else {
+    console.log("You lose :(")
+    computerScore +=1
+  }
+  // Log "You have {humanScore} points" to the console
+  // For example: "You have 0 points"
+  // Log "The bot has {computerScore} points" to the console.
+  // For example: "The bot has 3 points"
+  console.log(`You have ${humanScore} points.`)
+  console.log(`Bots has ${computerScore} points.`)
+
+  gamesPlayed += 1
+
+  $("h3").text("You have " + humanScore + " points, and the computer has " + computerScore + " points.")
+}
+
+// After defining the function, call the function 5 - 6 times,
+// Providing a different play for the computer and human each time.
+// Hint: You'll need to use two arguments
+// each time you call the play function.
+// play("rock")
+// play("scissors")
+// play("scissors")
+
+// BONUS:
+// Create a "best of 3" version
+
+// SUPER CHALLENGE:
+// Google and implement a random choice for the computer each time.
+</script>
+<style>
+  body {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  /* background-color: #; */
+  color: #EA6045;
+  margin: 3em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: 'Syne Mono', monospace;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+button {
+  cursor: pointer;
+}
+
+strong {
+  text-decoration: underline;
+}
+
+button {
+  background: #EA6045;
+  color: white;
+  outline: none;
+  border: 2px solid transparent;
+  padding: 10px 15px;
+  font-size: .9em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  margin: 5px;
+  width: 150px;
+  text-transform: uppercase;
+  transition: all .3s ease-in-out;
+  border-radius: 4px;
+}
+
+button:active,
+button:hover {
+  background: #FCFBE3;
+  color: #EA6045;
+  border: 2px solid #EA6045;
+}
+
+.scoreboard {
+  width: 14em;
+  margin: 40px auto;
+  border: 2px solid #EA6045;
+  border-radius: 4px;
+}
+.scoreboard h2 {
+  border-bottom: 2px solid #EA6045;
+  margin: 0;
+  padding: 10px;
+}
+.scoreboard table {
+  margin: 10px auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+.scoreboard th, .scoreboard td {
+  text-align: center;
+}
+.scoreboard td {
+  font-size: 3em;
+  padding: 0 20px;
+}
+
+#status {
+  margin-top: 20px;
+}
+</style>
+  
+  
+  
+  
