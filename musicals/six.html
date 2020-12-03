@@ -38,18 +38,18 @@ function getRandomElement(xs /* Array */) {
   return xs[getRandomInt(xs.length)];
 }
 
-// $("h1").on("click", function(){
+  // $("h1").on("click", function(){
 //   $("h6").text("Hi, jQuery put me here!")
 // })
 
 const rock = 'divorced';
 const paper = 'beheaded';
-const scissors = 'died & survived';
+const scissors = 'died and survived';
 
 const DEFEATS = {
-  rock: died and survived,
-  paper: divorced,
-  scissors: beheaded
+  rock: scissors,
+  paper: rock,
+  scissors: paper
 }
 
 // Create a variable humanScore. Give it a value of the number 0.
@@ -64,7 +64,7 @@ function play(humanPlay, computerPlay) {
   if (computerPlay === undefined) {
     computerPlay = getRandomElement(Object.keys(DEFEATS))
   }
-
+  
   // Log "You played {humanPlay}. The bot played {computerPlay}" to the console.
   // For example: "You played rock. The bot played scissors."
   console.log(`You played ${humanPlay}. The Queens played ${computerPlay}.`)
