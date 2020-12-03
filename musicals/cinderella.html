@@ -1,22 +1,83 @@
+  <!doctype html>
 <html>
-  <h1>Cinderella</h1>
+<head>
+	<meta charset=utf-8>
+	<title>Cinderella Chores</title>
+	<link rel="stylesheet" href="css/style.css">
+    <h1>Cinderella</h1>
+</head>
+<body>
+
+<h1>Click all the boxes!</h1>
+
+<div class="box" id="special">Wash the windows!</div>
+<div class="box">Mop the floor!</div>
+<div class="box">Iron this!</div>
+<div class="box">Make the beds!</div>
+<div class="box">Pick this up!</div>
+<div class="box">Wash the dishes!</div>
+
+
+<div class="slide-me">Sew the dress!</div>
+<div class="slide-me">Bake my cake!</div>
+<div class="slide-me">Put away the books!</div>
+<div class="slide-me">Sweep the lentils!</div>
+<div class="slide-me">Dust the shelves!</div>
+<div class="slide-me">Last chore!</div>
+
+<img src="https://i.pinimg.com/originals/59/5b/43/595b436667547bd5ac0fa044b8c906a5.gif">
+
+  <p>You get to go to the ball!</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+
+</body>
 </html>
-<script type: python>
-from random import random
+<script>
 
-# x is float in [0, 1)
-# x * 9 is float in [0, 9)
-# int(x * 9) is int in [0, 9)
-# int(x * 9) is int in [0, 8]
-# int(x * 9) + 1 is in [1, 9]
+// -------------------------------------------------------------------------------
+// Part 1 - Click a box! Get them all!
+// -------------------------------------------------------------------------------
 
-secret = int(random() * 50) + 1
+// 1. When an element with the class .box is clicked on, fade that .box out (using the this keyword).
+$(".box").on("click",function(){
+  $(this).fadeOut()
+})
 
-guess = 0
-while guess != secret:
-  guess = int(input('guess a number 1-50, please: '))
-  if guess != secret:
-    print("NO!")
-  else:
-    print("you win!")
+// 2. When an element with the class .slide-me is clicked on, slide that .slide-me up (using the this keyword).
+$(".slide-me").on("click",function(){
+  $(this).slideUp()
+})
 </script>
+  <style>
+    body {
+  text-align: center;
+}
+
+.box,
+.slide-me {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.box:last-of-type,
+.slide-me:last-of-type {
+  margin-right: 0;
+}
+
+.box {
+  background-color: #ffc9ea;
+}
+
+.slide-me {
+  background-color: #d2c9ff;
+}
+
+  </style>
