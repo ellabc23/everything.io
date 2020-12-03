@@ -67,7 +67,7 @@ function play(humanPlay, computerPlay) {
 
   // Log "You played {humanPlay}. The bot played {computerPlay}" to the console.
   // For example: "You played rock. The bot played scissors."
-  console.log(`You played ${humanPlay}. The bot played ${computerPlay}.`)
+  console.log(`You played ${humanPlay}. The Queens played ${computerPlay}.`)
   $("h2")
     .append(`<br>Round ${gamesPlayed + 1}: `)
     .append("You played <b>" + humanPlay + "</b>")
@@ -108,7 +108,7 @@ function play(humanPlay, computerPlay) {
 
   gamesPlayed += 1
 
-  $("h3").text("You have " + humanScore + " points, and the computer has " + computerScore + " points.")
+  $("h3").text("You have " + humanScore + " points, and the Queens have " + computerScore + " points.")
 }
 
 // After defining the function, call the function 5 - 6 times,
