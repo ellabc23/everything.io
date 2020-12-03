@@ -13,7 +13,7 @@
     <h1>Rock, Paper, SIX</h1>
     <button onclick='play("divorced")'>Divorced</button>
     <button onclick='play("beheaded")'>Beheaded</button>
-    <button onclick='play("died-survived")'>Died-Survived</button>
+    <button onclick='play("died & survived")'>Died & Survived</button>
 
     <h3></h3>
     
@@ -44,12 +44,12 @@ function getRandomElement(xs /* Array */) {
 
 const divorced = 'divorced';
 const beheaded = 'beheaded';
-const died-survived = 'died-survived';
+const died & survived = 'died & survived';
 
 const DEFEATS = {
-  divorced: died-survived,
+  divorced: died & survived,
   beheaded: divorced,
-  died-survived: beheaded
+  died & survived: beheaded
 }
 
 // Create a variable humanScore. Give it a value of the number 0.
