@@ -1,0 +1,17 @@
+from random import random
+
+# x is float in [0, 1)
+# x * 9 is float in [0, 9)
+# int(x * 9) is int in [0, 9)
+# int(x * 9) is int in [0, 8]
+# int(x * 9) + 1 is in [1, 9]
+
+secret = int(random() * 50) + 1
+
+guess = 0
+while guess != secret:
+  guess = int(input('guess a number 1-50, please: '))
+  if guess != secret:
+    print("NO!")
+  else:
+    print("you win!")
