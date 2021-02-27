@@ -1,7 +1,7 @@
 function login() {
 var username = document.getElementById('username').value;
 var password =  document.getElementById('password').value;
-if ((username=='ellabc23'&& password=='everything!!!')||(username=='zahara'&& password=='zahara')||(username=='oona'&& password=='jimenez')||(username=='isabelle'&& password=='isabelle')){
+if ((username=='ellabc23'&& password=='everything!!!')||(username=='zahara'&& password=='zahara')||(username=='oona'&& password=='jimenez')||(username=='isabelle'&& password=='isabelle')||(username=='guest'&& password=='login')){
 window.location.href='home.html';
 }
 } 
